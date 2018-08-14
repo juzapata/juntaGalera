@@ -6,12 +6,94 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Junta + Galera</title>
   <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBxWV1dIbnDKOZx84rI0zi2gR8T8qt8yMY",
+    authDomain: "juntagalera-rs18.firebaseapp.com",
+    databaseURL: "https://juntagalera-rs18.firebaseio.com",
+    projectId: "juntagalera-rs18",
+    storageBucket: "juntagalera-rs18.appspot.com",
+    messagingSenderId: "442263235658"
+  };
+  firebase.initializeApp(config);
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <header>
+    <!-- Just an image -->
+    <nav class="navbar navbar-light bg-junta-galera">
+      <a class="navbar-brand" href="#">
+        <img src="#" width="30" height="30" alt="">
+      </a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- Material form register -->
+        <div class="card">
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</body>
-</html>
+          <h5 class="card-header bg-junta-galera white-text text-center py-4">
+            <strong>Cadastre-se</strong>
+          </h5>
+
+          <!--Card content-->
+          <div class="card-body px-lg-5 pt-0">
+
+            <!-- Form -->
+            <form class="text-center" style="color: #757575;">
+
+              <!-- E-mail -->
+              <div class="md-form mt-5">
+                <input type="email" id="materialRegisterFormEmail" class="form-control">
+                <label for="materialRegisterFormEmail">E-mail</label>
+              </div>
+
+              <!-- Password -->
+              <div class="md-form">
+                <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock">
+                <label for="materialRegisterFormPassword">Senha</label>
+                <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  No mínimo 8 caractéres.
+                </small>
+              </div>
+
+              <!-- Sign up button -->
+              <button class="btn btn-outline btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Entrar</button>
+
+              </form>
+              <!-- Form -->
+
+            </div>
+
+          </div>
+          <!-- Material form register -->
+        </div>
+      </div>
+    </div>
+    <footer id="footer" class="page-footer bg-junta-galera mt-4">
+      <!-- Copyright-->
+      <div class="footer-copyright py-3 text-center">
+        © 2018 Copyright:
+        <a href="#">
+          <strong> juntagalera.com</strong>
+        </a>
+      </div>
+      <!--/.Copyright -->
+    </footer>
+    <script src="js/app.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+  </html>
