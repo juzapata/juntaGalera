@@ -1,6 +1,6 @@
 var database = firebase.database();
 // var USER_ID = getUserId();
-
+var remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
 $(document).ready(function() {
 
   database.ref('/comments').once('value')
@@ -9,6 +9,14 @@ $(document).ready(function() {
     snapshot.forEach(function(childSnapshot) {
       var childKey = childSnapshot.key;
       var childData = childSnapshot.val();
+
+      $('#comment-posted').prepend(`
+        <li class="card printed-comment p-4 mt-3 mb-3">
+        <p>${childData.text}</p>
+        <small id="remening" class="small-date">${remening}</small>
+        </li>
+        `);
+        console.log(childData.text);
       // console.log('chave:', childKey);
       // console.log('valor:', childData);
     });
@@ -19,8 +27,6 @@ $(document).ready(function() {
 
     var postComment = $('#comment').val();
     var chooseView = $('#dropdown-views').val();
-    var remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
-
     database.ref('comments').push({
       text: postComment,
       type: chooseView
