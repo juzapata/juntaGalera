@@ -1,3 +1,6 @@
+body{
+  font-family: 'Quicksand', sans-serif;
+}
 .bg-junta-galera-p{
   background-color: #9061C2;
 }
@@ -47,4 +50,21 @@
   color: #757575;
   resize: none;
   overflow: hidden;
+}
+.printed-comment{
+  width: 100%;
+  background: #fff;
+  padding: 30px;
+  margin-bottom: 10px;
+  color: #657786;
+  font-size: 1.5rem;
+  word-wrap: break-word;
+}
+.small-date{
+  position: relative;
+  left: 0%;
+  padding: 10px;
+  color: #657786;
+  font-size: 0.8rem;
+  text-align: right;
 }

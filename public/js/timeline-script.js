@@ -6,22 +6,26 @@ $(document).ready(function() {
     event.preventDefault();
 
     var postComment = $('#comment').val();
-    
-    $('#comment-posted').append(`<li>${postComment}</li>`);
+    var remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
+    //console.log(postComment);
+    $('#comment-posted').append(`
+      <li class="printed-comment">
+        ${postComment}
+        <small id="remening" class="small-date form-text text-muted mb-4">${remening}</small>
+      </li>`);
   })
 });
 
+function getUserId() {
+  var queryString = window.location.search;
+  var regExpForUserId = new RegExp(/\?userId=(.+)/);
+  return queryString.match(regExpForUserId)[1];
+}
 
 // $(document).ready(function() {
 //   getUserTasksFromDB();
 //   $(".send-task").click(addTasks);
 // });
-//
-// function getUserId() {
-//   var queryString = window.location.search;
-//   var regExpForUserId = new RegExp(/\?userId=(.+)/);
-//   return queryString.match(regExpForUserId)[1];
-// }
 //
 // function getUserTasksFromDB() {
 //   database.ref('tasks/' + USER_ID).once('value')
