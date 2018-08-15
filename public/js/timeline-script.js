@@ -2,12 +2,24 @@ var database = firebase.database();
 // var USER_ID = getUserId();
 
 $(document).ready(function() {
+
+  database.ref('/comments').once('value')
+    .then(function(snapshot) {
+
+    });
+
   $('#comment-button').click((event)=>{
     event.preventDefault();
 
     var postComment = $('#comment').val();
+    var chooseView = $('#dropdown-views').val();
     var remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
-    //console.log(postComment);
+
+    database.ref('comments').push({
+      text: postComment,
+      type: chooseView
+    });
+
     $('#comment-posted').append(`
       <li class="card printed-comment p-4 mt-3 mb-3">
         <p>${postComment}</p>
