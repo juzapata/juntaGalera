@@ -1,5 +1,5 @@
 var database = firebase.database();
-var USER_ID = getUserId();
+// var USER_ID = getUserId();
 
 $(document).ready(function() {
   $('#comment-button').click((event)=>{
@@ -9,18 +9,19 @@ $(document).ready(function() {
     var remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
     //console.log(postComment);
     $('#comment-posted').append(`
-      <li class="printed-comment">
-        ${postComment}
-        <small id="remening" class="small-date form-text text-muted mb-4">${remening}</small>
-      </li>`);
+      <li class="card printed-comment p-4 mt-3 mb-3">
+        <p>${postComment}</p>
+        <small id="remening" class="small-date">${remening}</small>
+      </li>
+    `);
   })
 });
 
-function getUserId() {
-  var queryString = window.location.search;
-  var regExpForUserId = new RegExp(/\?userId=(.+)/);
-  return queryString.match(regExpForUserId)[1];
-}
+// function getUserId() {
+//   var queryString = window.location.search;
+//   var regExpForUserId = new RegExp(/\?userId=(.+)/);
+//   return queryString.match(regExpForUserId)[1];
+// }
 
 // $(document).ready(function() {
 //   getUserTasksFromDB();
