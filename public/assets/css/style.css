@@ -83,3 +83,12 @@ select:nth-child(n) {
   font-size: 0.7rem;
   text-align: right;
 }
+.btn-icon-p{
+  border: none;
+  background-color: #fff;
+  color: #9061C2;
+  font-size: 0.8rem;
+}
+.btn-icon-p:hover{
+  color: #6400ce;
+}
