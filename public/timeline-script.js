@@ -53,7 +53,7 @@ database.ref("users").once("value").then(function(snapshot){
     var chooseView = $('#dropdown-views').val();
     var postComment = $('#comment').val();
     //verifica se tem algum valor dentro de textarea
-    if($('#comment').val('')) {
+    if($('#comment').val('') === "") {
       $('#comment-button').attr('disabled','true') //desabilita o botão
       $('#comment-button').addClass('add-opacity');//coloca a opacidade do botão
     } else {
