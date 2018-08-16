@@ -28,9 +28,13 @@ $(document).ready(function(){
       event.preventDefault();
       var email = $("#materialLogInFormEmail").val();
       var password = $("#materialLogInFormPassword").val();
-
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-        window.location = "timeline.html";
+      // var name = $("#materialRegisterFormName").val();
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function(response){
+        var userId = response.uid;
+        // database.ref("users/" + userId).set({
+        //   name: name, email: email
+        // });
+        window.location = "timeline.html?userId=" + userId;
       }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
