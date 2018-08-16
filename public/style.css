@@ -25,7 +25,7 @@ body{
   background-color: transparent;
   color: #9061C2;
 }
-.btn-outline:hover{
+.btn-outline-p:hover{
   background-color: #9061C2;
   color: #ffffff;
 }
@@ -108,9 +108,8 @@ select:nth-child(n) {
 .btn-icon-p:hover{
   color: #6400ce;
 }
-
-.blue-button {
-  background-color: #02BBD3;
+.add-opacity{
+  opacity: 0.4;
 }
 footer a {
   text-decoration: underline;

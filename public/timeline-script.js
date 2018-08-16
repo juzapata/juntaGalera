@@ -19,7 +19,7 @@ database.ref("users").once("value").then(function(snapshot){
   $(".log-out").click(function(){
     window.location = "index.html";
   });
-  
+
   snapshot.forEach(function(childSnapshot) {
     var childKey = childSnapshot.key;
     var childData = childSnapshot.val();
@@ -49,14 +49,22 @@ database.ref("users").once("value").then(function(snapshot){
 
     var postComment = $('#comment').val();
     var chooseView = $('#dropdown-views').val();
-
+    //verifica se tem algum valor dentro de textarea
+    if($('#comment').val() >= 0 || $('#comment').val() === "") {
+      $('#comment-button').attr('disabled','true') //desabilita o botão
+      $('#comment-button').addClass('add-opacity');//coloca a opacidade do botão
+    } else {
+      $('#comment-button').attr('disabled','false') //habilita o botão
+      $('#comment-button').removeClass('add-opacity');//remove a opacidade do botão
+    }
     var newCommentInDB = database.ref('comments/' + USER_ID).push({
       text: postComment,
       type: chooseView
     });
+    $('#comment').val("");
     //console.log(newCommentInDB.key);
     createComment(postComment, newCommentInDB.key);
-    filteredPosts(chooseView, newCommentInDB.key)
+    // filteredPosts(chooseView, newCommentInDB.key);
     })
   });
 
@@ -86,30 +94,30 @@ database.ref("users").once("value").then(function(snapshot){
           database.ref('comments/' + USER_ID + "/" + key).set({
             text: editablePost
           });
-      });
       $(`p[data-post-id=${key}]`).removeAttr('contenteditable','true');
-      $('.save-changes').addClass('display', 'none');
+      $('.save-changes').addClass('d-none');
       //console.log(editablePost);
+      });
     });
-    
   }
-  function filteredPosts(post, key){
-    database.ref('comments/' + USER_ID + "/" + key).equalTo({
 
-    });
-  }
+  // function filteredPosts(post, key){
+  //   database.ref('comments/' + USER_ID + "/" + key).equalTo({
+  //
+  //   });
+  // }
   function putFriends(name, key){
     if (key !== USER_ID){
       $(".friends-list").append(`
     <li class="friends pt-2 pl-3 mb-2">
       <span>${name}</span>
-      <button class="btn btn-outline-p btn-rounded" data-user-id="${key}">Seguir</button>
+      <button class="btn btn-outline-p btn-sm btn-rounded" data-user-id="${key}">Seguir</button>
     </li>`)
     }
     $(`button[data-user-id=${key}]`).click(function(){
       database.ref("friendship/" + USER_ID).push({
         friendId: key
       })
-      $(`button[data-user-id=${key}]`).addClass("blue-button").text("seguindo");
-    })
+      $(`button[data-user-id=${key}]`).addClass('d-none');
+    });
   }
