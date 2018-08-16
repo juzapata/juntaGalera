@@ -76,6 +76,9 @@ database.ref("users/" + USER_ID).once("value").then(function (snapshot){
 
       //console.log(editablePost);
     });
+    $(".log-out").click(function(){
+      window.location = "index.html";
+    })
   }
   // function getUserId(USER_ID) {
   //   var queryString = window.location.search;
