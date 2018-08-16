@@ -55,6 +55,7 @@ database.ref("users").once("value").then(function(snapshot){
     filteredPosts(chooseView, newCommentInDB.key)
     })
   });
+
   function createComment(post, key) {
     $('#comment-posted').prepend(`
       <li class="card printed-comment pt-2 pb-1 pl-3 pr-3 mt-3 mb-3">
@@ -104,71 +105,10 @@ database.ref("users").once("value").then(function(snapshot){
       <button data-user-id="${key}">Seguir</button>
     </li>`)
     }
+    $(`button[data-user-id=${key}]`).click(function(){
+      database.ref("friendship/" + USER_ID).push({
+        friendId: key
+      })
+      $(`button[data-user-id=${key}]`).addClass("blue-button");
+    })
   }
-  // function getUserId(USER_ID) {
-  //   var queryString = window.location.search;
-  //   var regExpForUserId = new RegExp(/\?userId=(.+)/);
-  //   return queryString.match(regExpForUserId)[1];
-  // }
-
-  // $(document).ready(function() {
-  //   getUserTasksFromDB();
-  //   $(".send-task").click(addTasks);
-  // });
-  //
-  // function getUserTasksFromDB() {
-  //   database.ref('tasks/' + USER_ID).once('value')
-  //   .then(function(snapshot) {
-  //     renderTasksList(snapshot);
-  //   });
-  // }
-  //
-  // function renderTasksList(snapshot) {
-  //   snapshot.forEach(function(childSnapshot) {
-  //     var task = childSnapshot.val();
-  //     createTaskItem(task.text, childSnapshot.key);
-  //   });
-  // }
-  //
-  // function createTaskItem(text, key) {
-  //   $(".task-list").append(`
-  //     <li>
-  //       <input class="tasks-checkbox" type="checkbox" data-id=${key} />
-  //       ${text}
-  //     </li>`
-  //   );
-  //
-  //   $(`input[data-id='${key}']`).click(function() {
-  //     var listItem = $(this).parent();
-  //     deleteTask(listItem, key);
-  //   });
-  // }
-  //
-  // function deleteTask(listItem, key) {
-  //   deleteTaskFromDB(key);
-  //   listItem.remove();
-  // }
-  //
-  // function deleteTaskFromDB(key) {
-  //   database.ref(`tasks/${USER_ID}/${key}`).remove();
-  // }
-  //
-  // function addTasks(event) {
-  //   event.preventDefault();
-  //
-  //   var taskText = $(".task-input").val();
-  //   var isTextEmpty = taskText === "";
-  //
-  //   if (!isTextEmpty) {
-  //     var newTask = addTaskToDB(taskText);
-  //     var taskId = newTask.getKey();
-  //
-  //     createTaskItem(taskText, taskId);
-  //   }
-  //
-  //   $(".task-input").val("");
-  // }
-  //
-  // function addTaskToDB(text) {
-  //   return database.ref('tasks/' + USER_ID).push({ text: text });
-  // }

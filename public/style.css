@@ -98,3 +98,7 @@ select:nth-child(n) {
 .btn-icon-p:hover{
   color: #6400ce;
 }
+
+.blue-button {
+  background-color: blue;
+}
