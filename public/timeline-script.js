@@ -8,10 +8,7 @@ const remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
 var chooseView = $('#dropdown-views').val();
 
 var postComment = $('#comment').val();
-window.addEventListener('load',function(){
-  $('#comment-button').attr('disabled','true') //desabilita o botão
-  $('#comment-button').addClass('add-opacity');//coloca a opacidade do botão
-});
+
 $(document).ready(function() {
 // ref() para colocar o nome do usuário
 database.ref("users/" + USER_ID).once("value").then(function (snapshot){
@@ -121,8 +118,9 @@ database.ref("users").once("value").then(function(snapshot){
       database.ref("friendship/" + USER_ID).push({
         friendId: key
       })
+
       $(`button[data-user-id=${key}]`).addClass('d-none');
-      
+
     });
     database.ref("friendship/" + USER_ID).once("value")
       .then(function(snapshot){
@@ -133,7 +131,7 @@ database.ref("users").once("value").then(function(snapshot){
           console.log(usuarioAmigo);
         if (usuarioAmigo === key){
           $(`button[data-user-id=${key}]`).addClass('d-none');
-        }                    
+        }
         })
       })
     }
