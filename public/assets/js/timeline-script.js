@@ -1,9 +1,13 @@
 var database = firebase.database();
-// var USER_ID = getUserId();
+
+var USER_ID = window.location.search.match(/\?userId=(.*)/)[1];
+console.log(USER_ID);
+
 const remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
+
 $(document).ready(function() {
 
-  database.ref('/comments').once('value')
+  database.ref('comments/' + USER_ID).once('value')
   .then(function(snapshot) {
     // console.log(snapshot.val());
     snapshot.forEach(function(childSnapshot) {
@@ -22,7 +26,7 @@ $(document).ready(function() {
     var postComment = $('#comment').val();
     var chooseView = $('#dropdown-views').val();
 
-    var newCommentInDB = database.ref('comments').push({
+    var newCommentInDB = database.ref('comments/' + USER_ID).push({
       text: postComment,
       type: chooseView
     });
@@ -45,7 +49,7 @@ $(document).ready(function() {
 
     $(`button[data-delete-id=${key}]`).click(()=>{
       $('#container-buttons').parent().remove();
-      database.ref('comments/' + key).remove();
+      database.ref('comments/' + USER_ID + "/" + key).remove();
       //console.log(key);
     });
 
@@ -54,7 +58,7 @@ $(document).ready(function() {
       $('.printed-comment').append(`<button class="btn-icon-p save-changes p-2 mr-2">Salvar</button>`);
       $('.save-changes').click(()=>{
           var editablePost = $(`p[data-post-id=${key}]`).html();
-          database.ref('comments/' + key).set({
+          database.ref('comments/' + USER_ID + "/" + key).set({
             text: editablePost
           });
       });

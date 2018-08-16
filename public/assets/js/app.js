@@ -30,7 +30,7 @@ $(document).ready(function(){
       var password = $("#materialLogInFormPassword").val();
 
       firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-        window.location = "timeline.html?userId=" + userId;
+        window.location = "timeline.html";
       }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
