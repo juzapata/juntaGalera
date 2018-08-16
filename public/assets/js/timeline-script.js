@@ -1,7 +1,7 @@
 var database = firebase.database();
 
-var USER_ID = window.location.search.match(/\?userId=(.*)/)[1];
-console.log(USER_ID);
+const USER_ID = window.location.search.match(/\?userId=(.*)/)[1];
+// console.log(USER_ID);
 
 const remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
 
@@ -62,14 +62,14 @@ $(document).ready(function() {
             text: editablePost
           });
       });
-
-
+      $(`p[data-post-id=${key}]`).removeAttr('contenteditable','true');
+      $('.save-changes').addClass('display', 'none');
       // $(`p[data-post-id=${key}]`).text(editablePost);
 
       //console.log(editablePost);
     });
   }
-  // function getUserId() {
+  // function getUserId(USER_ID) {
   //   var queryString = window.location.search;
   //   var regExpForUserId = new RegExp(/\?userId=(.+)/);
   //   return queryString.match(regExpForUserId)[1];
