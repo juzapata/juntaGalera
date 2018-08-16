@@ -121,15 +121,6 @@ database.ref("users").once("value").then(function(snapshot){
       database.ref("friendship/" + USER_ID).push({
         friendId: key
       })
-<<<<<<< HEAD
-      database.ref("friendship/" + USER_ID).once("value")
-      .then(function(snapshot){
-        console.log(snapshot.val());
-      })
-
-=======
-      
->>>>>>> c44f3480c1117628108372e020fd7544cbf638c9
       $(`button[data-user-id=${key}]`).addClass('d-none');
       
     });
