@@ -52,7 +52,7 @@
     <!--- Conteúdo da Página ---->
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-3 offset-sm-3 mt-3 mb-3">
+        <div class="col-12 col-sm-6 offset-sm-3 mt-3 mb-3">
           <div class="card p-3 friends-list ">
             <h5>Seus amiguinhos</h5>
           </div>
@@ -63,6 +63,16 @@
             <div class="card-body px-lg-5 pt-0">
               <!-- Form -->
               <form>
+                <!-- Small button group -->
+                <div class="md-form text-right">
+                  <div class="text-white text-center">
+                    <select id="drop-views" class="p-2 rounded">
+                      <option class="selected-item" value="" selected ><i class="far fa-eye-slash"></i>Ver publicações</option>
+                      <option class="selected-item" value="Todos"><i class="fas fa-globe-americas"></i>Todos</option>
+                      <option class="selected-item" value="Amigos"><i class="fas fa-user-friends"></i>Apenas amigos</option>
+                    </select>
+                  </div>
+                </div>
                 <!-- Comment -->
                 <div class="md-form text-center">
                   <textarea id="comment" value="" name="comment" placeholder="O que é que está rolando?" rows="2" cols="50"></textarea>
@@ -73,8 +83,8 @@
                 <button id="comment-button" class="btn btn-outline-p btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Publicar</button>
                 <!-- Small button group -->
                 <div class="md-form text-right">
-                  <div class="styled-select bg-junta-galera-p text-white text-center">
-                    <select id="dropdown-views">
+                  <div class="text-white text-center">
+                    <select id="dropdown-views" class="p-2 rounded">
                       <option class="selected-item" value="" selected ><i class="far fa-eye-slash"></i> Quem pode ver isso?</option>
                       <option class="selected-item" value="Todos"><i class="fas fa-globe-americas"></i> Todos</option>
                       <option class="selected-item" value="Amigos"><i class="fas fa-user-friends"></i> Amigos</option>

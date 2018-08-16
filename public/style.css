@@ -50,21 +50,22 @@ body{
 form{
   color: #757575;
 }
-.styled-select select:first-child {
-  background: transparent;
-  border: none;
+#dropdown-views {
+  background-color: #9061C2;
   height: 40px;
-  padding: 10px;
   font-size: 0.7rem;
-  width: 100%;
+  width: 90%;
   color: #ffffff;
 }
-select:nth-child(n) {
+#dropdown-views:nth-child(n), #drop-views:nth-child(n) {
   background-color: #9061C2;
+  height: 40px;
+  font-size: 0.7rem;
+  width: 80%;
   color: #ffffff;
 }
-.selected-item:hover{
-  background-color: #9061C2;
+#dropdown-views:hover, #drop-views:hover{
+  background-color: #6400ce;
   color: #ffffff;
 }
 #comment {

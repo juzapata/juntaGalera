@@ -5,6 +5,13 @@ var USER_ID = window.location.search.match(/\?userId=(.*)/)[1];
 
 const remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
 
+var chooseView = $('#dropdown-views').val();
+
+var postComment = $('#comment').val();
+window.addEventListener('load',function(){
+  $('#comment-button').attr('disabled','true') //desabilita o botão
+  $('#comment-button').addClass('add-opacity');//coloca a opacidade do botão
+});
 $(document).ready(function() {
 // ref() para colocar o nome do usuário
 database.ref("users/" + USER_ID).once("value").then(function (snapshot){
@@ -12,7 +19,7 @@ database.ref("users/" + USER_ID).once("value").then(function (snapshot){
   console.log(userName.name);
   $("#icon-name").text(userName.name);
   $("#hamburguer-name").text(userName.name);
-  
+
 });
 
 // ref() pra colocar os amiguinhos
@@ -30,9 +37,6 @@ database.ref("users").once("value").then(function(snapshot){
     // console.log('valor:', childData);
   });
 });
-   
- 
-
 
   database.ref('comments/' + USER_ID).once('value')
   .then(function(snapshot) {
@@ -49,11 +53,10 @@ database.ref("users").once("value").then(function(snapshot){
 
   $('#comment-button').click((event)=>{
     event.preventDefault();
-
-    var postComment = $('#comment').val();
-    var chooseView = $('#dropdown-views').val();
+    chooseView;
+    postComment;
     //verifica se tem algum valor dentro de textarea
-    if($('#comment').val() >= 0 || $('#comment').val() === "") {
+    if($('#comment').val('')) {
       $('#comment-button').attr('disabled','true') //desabilita o botão
       $('#comment-button').addClass('add-opacity');//coloca a opacidade do botão
     } else {
@@ -67,7 +70,7 @@ database.ref("users").once("value").then(function(snapshot){
     $('#comment').val("");
     //console.log(newCommentInDB.key);
     createComment(postComment, newCommentInDB.key);
-    // filteredPosts(chooseView, newCommentInDB.key);
+    filteredPosts(chooseView, newCommentInDB.key);
     })
   });
 
@@ -103,12 +106,9 @@ database.ref("users").once("value").then(function(snapshot){
       });
     });
   }
-
-  // function filteredPosts(post, key){
-  //   database.ref('comments/' + USER_ID + "/" + key).equalTo({
-  //
-  //   });
-  // }
+  function filteredPosts(post, key){
+    var filter = database.ref('comments/' + USER_ID + "/" + key).isEqual(chooseView);
+  }
   function putFriends(name, key){
     if (key !== USER_ID){
       $(".friends-list").append(`
@@ -125,11 +125,7 @@ database.ref("users").once("value").then(function(snapshot){
       .then(function(snapshot){
         console.log(snapshot.val());
       })
-      
+
       $(`button[data-user-id=${key}]`).addClass('d-none');
     });
     }
-
-     
-
-  
