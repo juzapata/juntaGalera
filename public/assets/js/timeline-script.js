@@ -1,11 +1,19 @@
 var database = firebase.database();
 
 var USER_ID = window.location.search.match(/\?userId=(.*)/)[1];
-console.log(USER_ID);
+// console.log(USER_ID);
 
 const remening = moment().locale('pt-BR').subtract(6, 'days').calendar();
 
 $(document).ready(function() {
+// ref() para colocar o nome do usuário
+database.ref("users/" + USER_ID).once("value").then(function (snapshot){
+  var userName = snapshot.val();
+  console.log(userName.name);
+  $("#icon-name").text(userName.name);
+  $("#hamburguer-name").text(userName.name);
+})
+
 
   database.ref('comments/' + USER_ID).once('value')
   .then(function(snapshot) {
