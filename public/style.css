@@ -1,5 +1,6 @@
 body{
   font-family: 'Quicksand', sans-serif;
+  color: #757575;
 }
 .bg-junta-galera-p{
   background-color: #9061C2;
@@ -46,6 +47,9 @@ body{
   background-color: #F2CF29;
   color: #ffffff;
 }
+form{
+  color: #757575;
+}
 .styled-select select:first-child {
   background: transparent;
   border: none;
@@ -84,6 +88,12 @@ select:nth-child(n) {
   color: #657786;
   word-wrap: break-word;
 }
+.friends{
+  list-style: none;
+  width: 100%;
+  background: #fff;
+  color: #657786;
+}
 .small-date{
   color: #657786;
   font-size: 0.7rem;
@@ -100,5 +110,13 @@ select:nth-child(n) {
 }
 
 .blue-button {
-  background-color: blue;
+  background-color: #02BBD3;
+}
+footer a {
+  text-decoration: underline;
+  color: #fff;
+}
+footer a:hover{
+  text-decoration: underline;
+  color: #02BBD3;
 }
