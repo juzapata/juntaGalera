@@ -16,6 +16,10 @@ database.ref("users/" + USER_ID).once("value").then(function (snapshot){
 
 // ref() pra colocar os amiguinhos
 database.ref("users").once("value").then(function(snapshot){
+  $(".log-out").click(function(){
+    window.location = "index.html";
+  });
+  
   snapshot.forEach(function(childSnapshot) {
     var childKey = childSnapshot.key;
     var childData = childSnapshot.val();
@@ -87,9 +91,7 @@ database.ref("users").once("value").then(function(snapshot){
       $('.save-changes').addClass('display', 'none');
       //console.log(editablePost);
     });
-    $(".log-out").click(function(){
-      window.location = "index.html";
-    })
+    
   }
   function filteredPosts(post, key){
     database.ref('comments/' + USER_ID + "/" + key).equalTo({
