@@ -40,7 +40,7 @@ database.ref("users/" + USER_ID).once("value").then(function (snapshot){
     });
     //console.log(newCommentInDB.key);
     createComment(postComment, newCommentInDB.key);
-
+    filteredPosts(chooseView, newCommentInDB.key)
     })
   });
   function createComment(post, key) {
@@ -72,14 +72,18 @@ database.ref("users/" + USER_ID).once("value").then(function (snapshot){
       });
       $(`p[data-post-id=${key}]`).removeAttr('contenteditable','true');
       $('.save-changes').addClass('display', 'none');
-      // $(`p[data-post-id=${key}]`).text(editablePost);
-
       //console.log(editablePost);
     });
     $(".log-out").click(function(){
       window.location = "index.html";
     })
   }
+  function filteredPosts(post, key){
+    database.ref('comments/' + USER_ID + "/" + key).equalTo({
+      type: chooseView
+    });
+  }
+
   // function getUserId(USER_ID) {
   //   var queryString = window.location.search;
   //   var regExpForUserId = new RegExp(/\?userId=(.+)/);
