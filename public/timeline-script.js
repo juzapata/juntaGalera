@@ -96,7 +96,6 @@ database.ref("users").once("value").then(function(snapshot){
       type: chooseView
     });
   }
-
   function putFriends(name, key){
     if (key !== USER_ID){
       $(".friends-list").append(`
