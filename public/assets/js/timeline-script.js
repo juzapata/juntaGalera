@@ -70,14 +70,14 @@ database.ref("users/" + USER_ID).once("value").then(function (snapshot){
             text: editablePost
           });
       });
-
-
+      $(`p[data-post-id=${key}]`).removeAttr('contenteditable','true');
+      $('.save-changes').addClass('display', 'none');
       // $(`p[data-post-id=${key}]`).text(editablePost);
 
       //console.log(editablePost);
     });
   }
-  // function getUserId() {
+  // function getUserId(USER_ID) {
   //   var queryString = window.location.search;
   //   var regExpForUserId = new RegExp(/\?userId=(.+)/);
   //   return queryString.match(regExpForUserId)[1];
