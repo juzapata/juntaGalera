@@ -12,14 +12,15 @@ database.ref("users/" + USER_ID).once("value").then(function (snapshot){
   console.log(userName.name);
   $("#icon-name").text(userName.name);
   $("#hamburguer-name").text(userName.name);
-})
+  
+});
 
 // ref() pra colocar os amiguinhos
 database.ref("users").once("value").then(function(snapshot){
   $(".log-out").click(function(){
     window.location = "index.html";
   });
-  
+
   snapshot.forEach(function(childSnapshot) {
     var childKey = childSnapshot.key;
     var childData = childSnapshot.val();
@@ -28,7 +29,9 @@ database.ref("users").once("value").then(function(snapshot){
     // console.log('chave:', childKey);
     // console.log('valor:', childData);
   });
-})
+});
+   
+ 
 
 
   database.ref('comments/' + USER_ID).once('value')
@@ -110,6 +113,11 @@ database.ref("users").once("value").then(function(snapshot){
       database.ref("friendship/" + USER_ID).push({
         friendId: key
       })
+      database.ref("friendship/" + USER_ID).once("value")
+      .then(function(snapshot){
+        console.log(snapshot.val());
+      })
+      
       $(`button[data-user-id=${key}]`).addClass("blue-button").text("seguindo");
     })
   }
