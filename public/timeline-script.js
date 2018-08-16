@@ -95,21 +95,21 @@ database.ref("users").once("value").then(function(snapshot){
   }
   function filteredPosts(post, key){
     database.ref('comments/' + USER_ID + "/" + key).equalTo({
-      type: chooseView
+
     });
   }
   function putFriends(name, key){
     if (key !== USER_ID){
       $(".friends-list").append(`
-    <li>
+    <li class="friends pt-2 pl-3 mb-2">
       <span>${name}</span>
-      <button data-user-id="${key}">Seguir</button>
+      <button class="btn btn-outline-p btn-rounded" data-user-id="${key}">Seguir</button>
     </li>`)
     }
     $(`button[data-user-id=${key}]`).click(function(){
       database.ref("friendship/" + USER_ID).push({
         friendId: key
       })
-      $(`button[data-user-id=${key}]`).addClass("blue-button");
+      $(`button[data-user-id=${key}]`).addClass("blue-button").text("seguindo");
     })
   }
