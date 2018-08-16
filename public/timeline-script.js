@@ -26,7 +26,7 @@ database.ref("users").once("value").then(function(snapshot){
     var childData = childSnapshot.val();
     putFriends(childData.name, childKey);
       // console.log(childData.text);
-    // console.log('chave:', childKey);
+    console.log(childKey);
     // console.log('valor:', childData);
   });
 });
@@ -121,13 +121,22 @@ database.ref("users").once("value").then(function(snapshot){
       database.ref("friendship/" + USER_ID).push({
         friendId: key
       })
-      database.ref("friendship/" + USER_ID).once("value")
-      .then(function(snapshot){
-        console.log(snapshot.val());
-      })
       
       $(`button[data-user-id=${key}]`).addClass('d-none');
+      
     });
+    database.ref("friendship/" + USER_ID).once("value")
+      .then(function(snapshot){
+        // console.log(snapshot.val());
+        snapshot.forEach(function(childSnapshot){
+          var friendId = childSnapshot.val();
+          var usuarioAmigo = friendId.friendId;
+          console.log(usuarioAmigo);
+        if (usuarioAmigo === key){
+          $(`button[data-user-id=${key}]`).addClass('d-none');
+        }                    
+        })
+      })
     }
 
      
