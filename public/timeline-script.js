@@ -50,8 +50,16 @@ database.ref("users").once("value").then(function(snapshot){
 
   $('#comment-button').click((event)=>{
     event.preventDefault();
-    chooseView;
-    postComment;
+    var chooseView = $('#dropdown-views').val();
+    var postComment = $('#comment').val();
+    //verifica se tem algum valor dentro de textarea
+    if($('#comment').val('')) {
+      $('#comment-button').attr('disabled','true') //desabilita o botão
+      $('#comment-button').addClass('add-opacity');//coloca a opacidade do botão
+    } else {
+      $('#comment-button').attr('disabled','false') //habilita o botão
+      $('#comment-button').removeClass('add-opacity');//remove a opacidade do botão
+    }
     var newCommentInDB = database.ref('comments/' + USER_ID).push({
       text: postComment,
       type: chooseView
