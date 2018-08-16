@@ -1,3 +1,6 @@
+body{
+  font-family: 'Quicksand', sans-serif;
+}
 .bg-junta-galera-p{
   background-color: #9061C2;
 }
@@ -37,14 +40,55 @@
   background-color: #F2CF29;
   color: #ffffff;
 }
+.styled-select select:first-child {
+  background: transparent;
+  border: none;
+  height: 40px;
+  padding: 10px;
+  font-size: 0.7rem;
+  width: 100%;
+  color: #ffffff;
+}
+select:nth-child(n) {
+  background-color: #9061C2;
+  color: #ffffff;
+}
+.selected-item:hover{
+  background-color: #9061C2;
+  color: #ffffff;
+}
 #comment {
   width: 100%;
   height: 100%;
   border: none;
-  border-bottom: 2px solid #02BBD3;
+  border-bottom: 1px solid #9061C2;
   padding: 5px;
   margin-bottom: 20px;
   color: #757575;
   resize: none;
   overflow: hidden;
+}
+.printed-comment{
+  list-style: none;
+  border-top: 4px solid #9061C2;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  width: 100%;
+  background: #fff;
+  color: #657786;
+  word-wrap: break-word;
+}
+.small-date{
+  color: #657786;
+  font-size: 0.7rem;
+  text-align: right;
+}
+.btn-icon-p{
+  border: none;
+  background-color: #fff;
+  color: #9061C2;
+  font-size: 0.8rem;
+}
+.btn-icon-p:hover{
+  color: #6400ce;
 }

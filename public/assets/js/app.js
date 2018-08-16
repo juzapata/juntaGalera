@@ -20,7 +20,7 @@ $(document).ready(function(){
       var password = $("#materialLogInFormPassword").val();
 
       firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-        window.location = "tasks.html";
+        window.location = "timeline.html";
       }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -29,6 +29,7 @@ $(document).ready(function(){
       });
 
     });
+<<<<<<< HEAD:public/js/app.js
    
  
  
@@ -39,4 +40,16 @@ $(document).ready(function(){
  
  
  
+=======
+    var database = firebase.database();
+
+
+
+
+
+
+
+
+
+>>>>>>> be674be77adcc30285f229aeea8f2d2afad5db03:public/assets/js/app.js
   });
