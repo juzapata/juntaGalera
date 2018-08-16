@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     $("#materialRegisterFormButton").click(function(event){
       event.preventDefault();
@@ -28,7 +29,7 @@ $(document).ready(function(){
       });
 
     });
-    var database = firebase.database();
+   
  
  
  
