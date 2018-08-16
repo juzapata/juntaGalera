@@ -14,6 +14,18 @@ database.ref("users/" + USER_ID).once("value").then(function (snapshot){
   $("#hamburguer-name").text(userName.name);
 })
 
+// ref() pra colocar os amiguinhos
+database.ref("users").once("value").then(function(snapshot){
+  snapshot.forEach(function(childSnapshot) {
+    var childKey = childSnapshot.key;
+    var childData = childSnapshot.val();
+    putFriends(childData.name, childKey);
+      // console.log(childData.text);
+    // console.log('chave:', childKey);
+    // console.log('valor:', childData);
+  });
+})
+
 
   database.ref('comments/' + USER_ID).once('value')
   .then(function(snapshot) {
@@ -82,4 +94,13 @@ database.ref("users/" + USER_ID).once("value").then(function (snapshot){
     database.ref('comments/' + USER_ID + "/" + key).equalTo({
       type: chooseView
     });
+  }
+  function putFriends(name, key){
+    if (key !== USER_ID){
+      $(".friends-list").append(`
+    <li>
+      <span>${name}</span>
+      <button data-user-id="${key}">Seguir</button>
+    </li>`)
+    }
   }
